@@ -1,3 +1,6 @@
+const { clearScreenDown } = require('readline');
+const { CLIENT_RENEG_LIMIT } = require('tls');
+
 if (process.argv.length != 4) {
     console.log(process.argv)
 	console.log("usage: node tester.js <tasknum> <path/to/taskN.js>\nexample: node tester.js 1 t1.js\n");
