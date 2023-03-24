@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div>
+        <div id="div-01"></div>
+        <button onclick="addHidden()">Button 1 CSS DISPLAY NONE</button>
+    </div>
+
+    <div>
+        <div id="div-02"></div>
+        <button id="button-02">Button 2 js delete</button>
+    </div>
+
+    <div>
+        <div id="div-03"></div>
+        <button id="button-03">Button 3 CSS+js</button>
+    </div>
+
+    <div>
+        <div style="display: flex;">
+            <div class="blackDiv"></div>
+            <div class="blackDiv"></div>
+            <div class="blackDiv"></div>
+            <div class="blackDiv"></div>
+            <div class="blackDiv"></div>
+        </div>
+        <button id="button-04">Button 4 CSS+js remove 5 divs</button>
+    </div>
+    <input type="text" id="input-01">
+    <button id="button-05">Button 5 Selector Show Hide</button>
+    <div>
+        <div id="yellowDiv"></div>
+    </div>
+
+    <div>
+        <button id="button-06">Button 6 Focus</button>
+        <div id="redDiv"></div>
+    </div>
+
+    <div>
+        <input type="text" id="input-02">
+        <div id="greenDiv"></div>
+    </div>
+
+    <div id="imageDiv">
+        <input type="text" id="input-03">
+        <button id="button-07">Button 7 Show image</button>
+    </div>
+
+    <div id="imagesDiv">
+        <textarea id="textarea-01" cols="30" rows="10"></textarea>
+        <button id="button-08">Button 8</button>
+    </div>
+
+    <div id="topRightCornerDiv">
+        <p id="cursorPosition"></p>
+        <p id="language"></p>
+        <p id="userCoordinates"></p>
+    </div>
+
+    <div id="savedDiv">
+        <div id="localStorageDiv" class="savedDivBlock" contentEditable="true">localStorage</div>
+        <div id="cookieDiv" class="savedDivBlock" contentEditable="true">cookies</div>
+        <div id="sessionStorageDiv" class="savedDivBlock" contentEditable="true">sessionStorage</div> 
+    </div>
+
+    <div>
+        <div id="largeDiv">
+            <div id="smallDiv"></div>
+        </div>
+    </div>
+
+    <div>
+        <button id="button-10">Lock</button>
+    </div>
+
+    <div>
+        <form onsubmit="return false;"><input type="submit" value="GO"></form> <!-- or e.preventDefault() -->
+    </div>
+
+    <div id="dropDiv">
+        <input type="file" id="input-04">
+    </div>
+</body>
+
+</html>
