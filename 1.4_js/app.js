@@ -109,7 +109,6 @@ function addImages() {
     const textarea1 = document.getElementById("textarea-01").value;
     const images = textarea1.split("\n");
     const src = document.getElementById("imagesDiv");
-    console.log(images);
     for (let i = 0; i < images.length; i++) {
         const url = images[i];
         const image = document.createElement("img");
@@ -189,37 +188,34 @@ input4.addEventListener("input", function () {
 });
 
 const localeStorageDiv = document.getElementById("localStorageDiv");
-localeStorageDiv.innerText = localStorage.getItem(localeStorageDiv);
+localeStorageDiv.innerText = (localStorage.getItem(localeStorageDiv) === null) ? localeStorageDiv.innerText : localStorage.getItem(localeStorageDiv);
 localeStorageDiv.addEventListener("focusout", function () {
     localStorage.setItem(localeStorageDiv, localeStorageDiv.innerText);
 });
 
 const cookieDiv = document.getElementById("cookieDiv");
-console.log(getCookie(cookieDiv));
+cookieDiv.innerText = (getCookie(cookieDiv) === undefined) ? cookieDiv.innerText : getCookie(cookieDiv);
+
 cookieDiv.addEventListener("focusout", function () {
-    setCookie(cookieDiv, "sdasdasd")
+    document.cookie = setCookie(cookieDiv, cookieDiv.innerText);
 });
+
 const sessionStorageDiv = document.getElementById("sessionStorageDiv");
+sessionStorageDiv.innerText = (sessionStorage.getItem(localeStorageDiv) === null) ? sessionStorageDiv.innerText : sessionStorage.getItem(sessionStorageDiv);
 sessionStorageDiv.addEventListener("focusout", function () {
-
+    sessionStorage.setItem(sessionStorageDiv, sessionStorageDiv.innerText);
 });
 
-function setCookie(cname, cvalue) {
-    document.cookie = cname + "=" + cvalue + ";path=/";
+function setCookie(name, value) {
+    document.cookie = `${name}=${value}`;
 }
 
-function getCookie(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
+function getCookie(name) {
+    const cookie = document.cookie;
+    const reg = new RegExp(`${name}`, 'g');
+    let value;
+    if (reg.test(cookie)) {
+        value = cookie.split('; ').find(s => s.startsWith(`${name}=`)).split('=')[1];
     }
-    return "";
+    return value;
 }
