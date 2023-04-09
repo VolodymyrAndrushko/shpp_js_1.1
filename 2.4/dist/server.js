@@ -4,16 +4,39 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const cors_1 = __importDefault(require("cors"));
-const bodyParser = require("body-parser");
-const app = (0, express_1.default)();
-const port = process.env.port || 3005;
-const items = require('./routers/router_v1');
-app.use(express_1.default.static("static"));
-app.use((0, cors_1.default)());
-app.use(bodyParser.json());
-app.use("/api/v1", items);
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
+const mongoose_1 = __importDefault(require("mongoose"));
+const body_parser_1 = __importDefault(require("body-parser"));
+const db_config_1 = require("./db/db_config");
+const express_session_1 = __importDefault(require("express-session"));
+const connect_mongo_1 = __importDefault(require("connect-mongo"));
+const router_v1_1 = __importDefault(require("./routers/router_v1"));
+const router_v2_1 = __importDefault(require("./routers/router_v2"));
+mongoose_1.default
+    .connect(db_config_1.config.mongo.url)
+    .then(() => {
+    console.log("MongoDB connected!");
+    startServer();
+})
+    .catch((err) => console.log(err));
+const startServer = () => {
+    const app = (0, express_1.default)();
+    app.use(express_1.default.static("static"));
+    app.use(body_parser_1.default.json());
+    app.use((0, express_session_1.default)({
+        store: connect_mongo_1.default.create({ mongoUrl: db_config_1.config.mongo.url }),
+        secret: 'shpp_node_js',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            maxAge: 1000 * 3600 * 5,
+            httpOnly: true
+        }
+    }));
+    // app.use(cors());
+    app.use("/api/v1", router_v1_1.default);
+    app.use("/api/v2/router", router_v2_1.default);
+    app.listen(db_config_1.config.server.port, () => {
+        console.log(`Example app listening on port ${db_config_1.config.server.port}`);
+    });
+};
 //# sourceMappingURL=server.js.map
