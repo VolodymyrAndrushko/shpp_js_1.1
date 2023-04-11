@@ -1,0 +1,157 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: 30%;
+	margin-right: 30%;
+	font-family: Arial, Helvetica, sans-serif;
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+h1 {
+	display: flex;
+	justify-content: center;
+	margin: 40px;
+	padding: 15px;
+}
+
+
+input,
+button {
+	appearance: none;
+	border: none;
+	outline: none;
+	background: none;
+	border-radius: 5px;
+}
+
+.logout {
+	flex: 1 1 0%;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	cursor: pointer;
+	color: white;
+	width: 20%;
+	position: relative;
+	top: 0px;
+	left: 80%;
+	font-size: 15px;
+	font-weight: 700;
+	padding: 5px;
+	transition: 0.5s;
+	background-color: red;
+}
+
+
+.logout:hover {
+	opacity: 0.5;
+}
+
+.logout:active {
+	opacity: 0.5;
+}
+
+
+.text {
+	padding: 5px;
+}
+
+.main {
+	display: flex;
+	padding: 10px 5px;
+}
+
+#items .item {
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(56, 56, 56);
+	border-radius: 8px;
+	padding: 5px;
+	margin: 5px;
+	margin-bottom: 10px;
+}
+
+.item #submitted-task {
+	flex: 1 1 0%;
+	padding: 5x;
+}
+
+.item #submitted-task input {
+	width: 98%;
+}
+
+.item #submitted-task .text {
+	color: white;
+	transition: 0.4s;
+}
+
+.item #submitted-task input:not(:read-only):focus {
+	color: white;
+	transition: 0.5s;
+	outline-style: solid;
+	outline-color: rgb(0, 153, 255);
+}
+
+#new-item-form {
+	display: flex;
+}
+
+#new-item-input {
+	flex: 1 1 0%;
+	margin-right: 5px;
+	outline: auto;
+	outline-color: rgb(14, 77, 47);
+}
+
+#new-item-submit {
+	background-color: rgb(61, 61, 61);
+	color: white;
+	font-size: 20px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: 0.4s;
+}
+
+#new-item-submit:hover {
+	opacity: 0.5;
+}
+
+#new-item-submit:active {
+	opacity: 0.5;
+}
+
+.item-settings .edit {
+	color: white;
+}
+
+.fa {
+	color: white;
+}
+
+.item-settings .delete {
+	color: red;
+}
+
+.item-settings .delete:hover {
+	opacity: 0.5;
+}
+
+.item-settings .delete:active {
+	opacity: 0.5;
+}
+
+.item-settings .edit:hover {
+	opacity: 0.5;
+}
+
+.item-settings .edit:active {
+	opacity: 0.5;
+}
+
+hr.rounded {
+	border-top: 8px solid #6b6b6b;
+	border-radius: 5px;
+}

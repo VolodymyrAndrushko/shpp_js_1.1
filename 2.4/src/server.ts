@@ -27,7 +27,8 @@ mongoose
 const startServer: Function = () => {
     const app: Express = express();
 
-    app.use(express.static("static"));
+    // app.use(express.static("static"));
+    app.use(express.static(join(__dirname, "../static/version2/")));
     app.use(bodyParser.json());
 
     app.use(session({

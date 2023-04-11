@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+button {
+    appearance: none;
+    border: none;
+    margin: 5px;
+    border-radius: 6px;
+}
+
+.form-box {
+    border-radius: 8px;
+    padding: 60px 60px 45px;
+    width: 70%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    text-align: center;
+    background-color: rgb(59, 59, 59);
+
+}
+
+.form-box h1 {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.username-input-field input,
+.password-input-field input {
+    width: 50%;
+    padding: 10px;
+}
+
+.action-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.action-buttons button {
+    width: 26%;
+    background-color: rgb(102, 102, 102);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 6px;
+}
+
+.action-buttons #register:hover {
+    opacity: 0.8;
+}
+
+.action-buttons #register:active {
+    opacity: 0.6;
+}
+
+.action-buttons #login:hover {
+    opacity: 0.8;
+}
+
+.action-buttons #login:active {
+    opacity: 0.6;
+}

@@ -168,7 +168,7 @@ export const editItem = (req: Request, res: Response): Promise<Response> | Respo
         { $set: { "items.$[element]": item } },
         { arrayFilters: [{ "element._id": itemId }] }
     )
-        .then(() => res.status(204).json({ ok: true }))
+        .then(() => res.status(200).json({ ok: true }))
         .catch((err) => res.status(500).json({ error: err }));
 };
 
