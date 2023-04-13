@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Click Counter</h1>
+    <button id="plus-button">Plus</button>
+    <button id="minus-button">Minus</button>
+    <p id="counter-text"></p>
+    <script>
+        const counterText = document.getElementById("counter-text");
+
+        const Button = Object.freeze({
+            PLUS: "PLUS",
+            MINUS: "MINUS",
+        });
+        function updateCounterText(plusCounter, minusCounter) {
+            counterText.innerText = `PLUS: ${plusCounter} MINUS: ${minusCounter}`
+        }
+
+        function sendButtonClick(button) {
+            fetch("/api/counter", {
+                method: "POST",
+                body: JSON.stringify({ button }),
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            })
+                .then((res)=> res.json())
+                .then(({ count} )=> updateCounterText(count["PLUS"],count["MINUS"]));
+        }
+        document.getElementById("plus-button").addEventListener("click", ()=>{
+            sendButtonClick(Button.PLUS);
+        })
+        document.getElementById("minus-button").addEventListener("click", ()=>{
+            sendButtonClick(Button.MINUS);
+        })
+    </script>
+</body>
+
+</html>
